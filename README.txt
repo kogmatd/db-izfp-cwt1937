@@ -1,5 +1,6 @@
 [Aufnahme]
 Anregung: SINC-Funktion mi 250kHz
+Sensoren: 1 Sender und 2 Empfänger
 Proben: 601 gute, 18 schlechte und 1 Grenzmuster
 
 [Audiodateien]
