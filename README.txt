@@ -1,6 +1,6 @@
 [Aufnahme]
 Anregung: SINC-Funktion mi 250kHz
-Proben: 602 gute und 18 schlechte
+Proben: 601 gute, 18 schlechte und 1 Grenzmuster
 
 [Audiodateien]
 srate = 22050Hz (Ist falsch!)
@@ -19,8 +19,8 @@ AH: Sensor 1
 BH: Sensor 2
 
 NNNNN: Proben-ID 
-	0-601:   gut
-	602-619: defekt
+	0-600:   gut
+	601-619: defekt
 	611:     Grenzmuster (keine eindeutige Zuordnung möglich)
 
 [Beschreibung und Dokumentation]
