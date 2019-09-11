@@ -18,7 +18,10 @@ son: Sonagramme
 AH: Sensor 1
 BH: Sensor 2
 
-NNNNN: Proben-ID (0-601: gut, 602-619: defekt)
+NNNNN: Proben-ID 
+	0-601:   gut
+	602-619: defekt
+	611:     Grenzmuster (keine eindeutige Zuordnung möglich)
 
 [Beschreibung und Dokumentation]
  - report.pdf
