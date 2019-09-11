@@ -9,7 +9,7 @@ enc   = 16Bit
 len   = 17408 Samples
 
 [Dateinamen]
-1937_280802_(tme|wav|son)/(AH|BH)_1937_280802_1_NNNNN.(tme|wav|son)
+(tme|wav|son)/(AH|BH)_1937_280802_1_NNNNN.(tme|wav|son)
 
 tme: Originaldateien
 wav: Wav-Dateien
