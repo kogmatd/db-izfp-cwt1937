@@ -1,0 +1,9 @@
+## UASR sensor list file
+## - IZFP Gear Wheels Thale Database (Recording 1937)
+##
+##   first  column: sensor ID
+
+AH
+BH
+
+## EOF

@@ -1,0 +1,12 @@
+## UASR class definition file
+## - IZFP Gear Wheels Thale Database (Recording 1937)
+##
+##   first  column: model name
+##   second column: number of states
+##   third  column: voice/unvoiced information
+##   fourth column: abstract model for SMG reclassification
+
+OK  10 1.0  -  # Wheel ok
+UNK  1 1.0  -  # Wheel broken
+
+## EOF

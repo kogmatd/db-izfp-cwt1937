@@ -1,0 +1,61 @@
+## Unified Approach to Speech Synthesis and Recognition
+## - IZFP-D Gear Wheels Thale Database (Recording 1937)
+##
+## AUTHOR : Matthias Wolff, Constanze Tschöpe
+## PACKAGE: uasr/scripts/dlabpro/db/izfp
+##
+
+## DB.xtp help function
+".-CMD_DB_help" "function" ?instance if
+  /disarm -CMD_DB_help
+  {
+    "\n\n   ------------------------------------------------------------" -MSG; # Very helpful ...
+      "\n   DB.xtp feafus <cfgfile>"                                      -MSG; # |
+    "\n\n     Makes supervectors from the features of sensors AH and BH"  -MSG; # |
+    "\n\n     OPTIONS:"                                                   -MSG; # |
+      "\n       -P<key>=<value>  set/overwrite configuration key"         -MSG; # |
+    "\n\n   ------------------------------------------------------------" -MSG; #
+  }
+end
+
+## Extension to DB.xtp
+function -CMD_DB_feafus()
+{
+  "\n\n// DATABASE MAINTENANCE COMMAND 'feafus'" -MSG;                          # Protocol
+  data idFeaAh;                                                                 # Features of sensor AH
+  data idFeaBh;                                                                 # Features of sensor BH
+  data idLab;                                                                   # Labels
+  file iF;      ( "fea" ""            -CFG_get_path  ) iF   -set path;          # Input feature file path
+                ( "fea.ext" "dn3" "S" -CFG_get_ex    ) iF   -set ext;           # Feature file extension
+                ( "all" ""            -CFG_get_flist ) iF   -set flist;         # File list (all files)
+  var  sPfa;    ( "pfa"     ""        -CFG_get       ) sPfa -sset;  
+  var  nDim;    ( "pfa.dim" 0         -CFG_get       ) nDim -vset;  
+  var  sDout;
+  ( iF.path "?$[sPfa]_$[nDim]?$[sPfa]_${2*nDim}" "replace" -VAR_strop ) sDout =;
+
+  "\n   - Output dir    : $[sDout]"                                       -MSG; # Protocol
+  "\n\n   Fusioning $[iF.len] feature files ..."                          -MSG; # Protocol
+  iF -next while
+    "\n     ${iF.sfile}:"                                                 -MSG;
+    iF "AH" "F" idFeaAh -FEA_get;
+    iF "BH" "F" idFeaBh -FEA_get;
+    idFeaAh NULL idFeaAh -LAB_strip;
+    idFeaBh idFeaAh -join;
+    " -> $[sDout]/$[iF.sfile].$[iF.ext] ..."                              -MSG;
+    "$[sDout]/$[iF.sfile].$[iF.ext]" idFeaAh /zip /noerror -save
+    ?error if " FAILED" else " ok" end                                    -MSG;
+  end
+
+  "\n   done.\n\n// DB.xtp completed (${.__UTL_nErrors} errors).\n"       -MSG;
+  0 return;
+}
+
+## Overwrite UASR-functions                                                     # -------------------------------------
+".-SIG_import" "function" ?instance if                                          # Overwrite -SIG_import
+  /disarm -SIG_import_raw /disarm -SIG_import =;                                # ...
+end                                                                             # ...
+".-FEA_import" "function" ?instance if                                          # Overwrite -FEA_import
+  /disarm -FEA_import_raw /disarm -FEA_import =;                                # ...
+end                                                                             # ...
+
+## EOF
