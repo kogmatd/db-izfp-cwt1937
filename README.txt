@@ -12,8 +12,8 @@ len   = 17408 Samples
 [Dateinamen]
 (tme|wav|son)/(AH|BH)_1937_280802_1_NNNNN.(tme|wav|son)
 
-tme: Originaldateien
-wav: Wav-Dateien
+tme: Originaldateien (Möglichst diese Dateien verwenden)
+wav: Wav-Dateien (Eventuell in Auflösung reduziert)
 son: Sonagramme
 
 AH: Sensor 1
